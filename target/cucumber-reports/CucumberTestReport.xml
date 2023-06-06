@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="36.072" tests="8" skipped="0" failures="0" errors="0">
+<testcase classname="User Management" name="Verify that I can create a user with a valid access token and valid request body" time="24.661">
+<system-out><![CDATA[
+When I create a new user with "valid" access token and "valid" request body.passed
+Then I assert that the response status code is equal to 201.................passed
+]]></system-out>
+</testcase>
+<testcase classname="User Management" name="Verify that I can not create a user with an invalid access token and valid request body" time="0.709">
+<system-out><![CDATA[
+When I create a new user with "invalid" access token and "valid" request body.passed
+Then I assert that the response status code is equal to 401.................passed
+Then I assert that the response contains "{"message":"Invalid token"}"......passed
+]]></system-out>
+</testcase>
+<testcase classname="User Management" name="Verify that I can update user with valid access token and valid request body" time="3.013">
+<system-out><![CDATA[
+When I create a new user with "valid" access token and "valid" request body.passed
+Then I assert that the response status code is equal to 201.................passed
+When I update the user with "valid" access token and "valid" request body...passed
+Then I assert that the response status code is equal to 200.................passed
+]]></system-out>
+</testcase>
+<testcase classname="User Management" name="Verify that I can delete user with valid access token" time="2.042">
+<system-out><![CDATA[
+When I create a new user with "valid" access token and "valid" request body.passed
+Then I assert that the response status code is equal to 201.................passed
+When I delete the user with "valid" access token............................passed
+Then I assert that the response status code is equal to 204.................passed
+]]></system-out>
+</testcase>
+<testcase classname="User Management" name="Verify that I can not create user with invalid request body" time="0.419">
+<system-out><![CDATA[
+When I create a new user with "valid" access token and "invalid" request body.passed
+Then I assert that the response status code is equal to 422.................passed
+Then I assert that the response contains "[{"field":"name","message":"can't be blank"}]".passed
+]]></system-out>
+</testcase>
+<testcase classname="User Management" name="Verify that I can not create user with empty  body" time="0.464">
+<system-out><![CDATA[
+When I create a new user with "valid" access token and empty body...........passed
+Then I assert that the response status code is equal to 422.................passed
+]]></system-out>
+</testcase>
+<testcase classname="User Management" name="Verify that I can not update the user without a user ID" time="1.136">
+<system-out><![CDATA[
+When I create a new user with "valid" access token and "valid" request body.passed
+Then I assert that the response status code is equal to 201.................passed
+When I update the user with "valid" access token and "valid" request body, without user ID.passed
+Then I assert that the response status code is equal to 404.................passed
+]]></system-out>
+</testcase>
+<testcase classname="User Management" name="Verify that I can not update deleted user" time="2.431">
+<system-out><![CDATA[
+When I create a new user with "valid" access token and "valid" request body.passed
+Then I assert that the response status code is equal to 201.................passed
+When I delete the user with "valid" access token............................passed
+Then I assert that the response status code is equal to 204.................passed
+When I update the user with "valid" access token and "valid" request body...passed
+Then I assert that the response status code is equal to 404.................passed
+Then I assert that the response contains "{"message":"Resource not found"}".passed
+]]></system-out>
+</testcase>
+</testsuite>
